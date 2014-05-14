@@ -23,8 +23,8 @@ The following example works without assistance in Chrome, Firefox, and Opera. Ja
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 	<g id="codepen"><title>CodePen</title><path etc.../></g>
-	<g id="codepen"><title>CodePen</title><path etc.../></g>
-	<g id="codepen"><title>CodePen</title><path etc.../></g>
+	<g id="youtube"><title>YouTube</title><path etc.../></g>
+	<g id="twitter"><title>Twitter</title><path etc.../></g>
 </svg>
 ```
 
@@ -33,8 +33,8 @@ The following example works without assistance in Chrome, Firefox, and Opera. Ja
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 	<g id="codepen"><title>CodePen</title><img src="cache.svg.codepen.png"></g>
-	<g id="codepen"><title>YouTube</title><img src="cache.svg.youtube.png"></g>
-	<g id="codepen"><title>Twitter</title><img src="cache.svg.twitter.png"></g>
+	<g id="youtube"><title>YouTube</title><img src="cache.svg.youtube.png"></g>
+	<g id="twitter"><title>Twitter</title><img src="cache.svg.twitter.png"></g>
 </svg>
 ```
 
