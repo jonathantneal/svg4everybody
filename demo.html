@@ -3,15 +3,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="svg4everybody.ie8.js"></script>
-<style>svg { height: 150px; overflow: hidden; width: 100%; }</style>
-<style>svg { width: 256px; height: 256px; }</style>
+<style>svg { display: inline-block; height: 150px; overflow: hidden; width: 100%; }</style>
+<style>svg { height: 256px; width: 256px; } img { max-width: 100%; max-height: 100%; } </style>
+<script>
+function addSVG(node) {
+	node.innerHTML = '<svg viewBox="0 0 512 512"><use xlink:href="demo.svg#pencil"></use></svg>';
+
+	node.parentNode.replaceChild(node.lastChild, node);
+}
+</script>
 
 <body>
 	<svg viewBox="0 0 512 512">
 		<use xlink:href="demo.svg#camera"></use>
 	</svg>
 
-	<svg viewBox="0 0 512 512">
-		<use xlink:href="demo.svg#pencil"></use>
-	</svg>
+	<button onclick="addSVG(this)">Add another SVG</button>
 </body>
