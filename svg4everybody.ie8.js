@@ -44,7 +44,7 @@
 
 			xhr.s.push([svg, use, url_hash]);
 
-			if (xhr.responseText) xhr.onload();
+			if (xhr.readyState === 4) xhr.onload();
 		});
 	});
 })(
