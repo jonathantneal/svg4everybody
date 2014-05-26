@@ -1,57 +1,72 @@
-(function (document, navigator, CACHE, LTEIE8, IE9TO11) {
-	if (LTEIE8) document.attachEvent('onreadystatechange', function () {
-		var use, img;
+(function (document, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
+	function onload() {
+		var xhr = this, x = document.createElement('x'), s = xhr.s;
+
+		x.innerHTML = xhr.responseText;
+
+		xhr.onload = function () {
+			s.splice(0).map(function (array) {
+				var g = x.querySelector('#' + array[1]);
+
+				if (g) {
+					g = g.cloneNode(true);
+
+					g.removeAttribute('id');
+
+					array[0].appendChild(g);
+				}
+			});
+		};
+
+		xhr.onload();
+	}
+
+	function onframe() {
+		var use;
 
 		while ((use = document.getElementsByTagName('use')[0])) {
-			img = new Image();
+			if (LTEIE8) {
+				var
+				img = new Image();
 
-			img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
+				img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
 
-			use.parentNode.replaceChild(img, use);
-		}
-	});
+				use.parentNode.replaceChild(img, use);
+			} else {
+				var
+				svg = use.parentNode,
+				url = use.getAttribute('xlink:href').split('#'),
+				url_root = url[0],
+				url_hash = url[1],
+				xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
 
-	else if (IE9TO11) document.addEventListener('DOMContentLoaded', function () {
-		[].forEach.call(document.querySelectorAll('use'), function (use) {
-			var
-			svg = use.parentNode,
-			url = use.getAttribute('xlink:href').split('#'),
-			url_root = url[0],
-			url_hash = url[1],
-			xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
+				svg.removeChild(use);
 
-			if (!xhr.s) {
-				xhr.s = [];
+				if (!xhr.s) {
+					xhr.s = [];
 
-				xhr.open('GET', url_root);
+					xhr.open('GET', url_root);
 
-				xhr.onload = function () {
-					var x = document.createElement('x'), s = xhr.s;
+					xhr.onload = onload;
 
-					x.innerHTML = xhr.responseText;
+					xhr.send();
+				}
 
-					xhr.onload = function () {
-						s.splice(0).map(function (array) {
-							var g = x.querySelector('#' + array[2]);
+				xhr.s.push([svg, url_hash]);
 
-							if (g) array[0].replaceChild(g.cloneNode(true), array[1]);
-						});
-					};
-
-					xhr.onload();
-				};
-
-				xhr.send();
+				if (xhr.readyState === 4) xhr.onload();
 			}
+		}
 
-			xhr.s.push([svg, use, url_hash]);
+		requestAnimationFrame(onframe);		
+	}
 
-			if (xhr.readyState === 4) xhr.onload();
-		});
-	});
+	if (LTEIE8 || IE9TO11) {
+		onframe();
+	}
 })(
 	document,
-	navigator,
+	window.requestAnimationFrame || window.setTimeout,
 	{},
 	/MSIE\s[1-8]\b/.test(navigator.userAgent),
 	/Trident\/[567]\b/.test(navigator.userAgent),
