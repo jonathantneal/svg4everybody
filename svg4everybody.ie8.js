@@ -1,7 +1,9 @@
 (function (document, navigator, CACHE, LTEIE8, IE9TO11) {
 	if (LTEIE8) document.attachEvent('onreadystatechange', function () {
-		for (var all = document.getElementsByTagName('use'), index = 0, use; (use = all[index]); ++index) {
-			var img = new Image();
+		var use, img;
+
+		while ((use = document.getElementsByTagName('use')[0])) {
+			img = new Image();
 
 			img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
 
