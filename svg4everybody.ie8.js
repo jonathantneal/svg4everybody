@@ -9,7 +9,7 @@
 		}
 	});
 
-	if (IE9TO11) document.addEventListener('DOMContentLoaded', function () {
+	else if (IE9TO11) document.addEventListener('DOMContentLoaded', function () {
 		[].forEach.call(document.querySelectorAll('use'), function (use) {
 			var
 			svg = use.parentNode,
