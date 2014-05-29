@@ -6,8 +6,8 @@
 <style>svg { display: inline-block; height: 150px; overflow: hidden; width: 100%; }</style>
 <style>svg { height: 256px; width: 256px; } img { max-width: 100%; max-height: 100%; } </style>
 <script>
-function addSVG(node) {
-	node.innerHTML = '<svg viewBox="0 0 512 512"><use xlink:href="demo.svg#pencil"></use></svg>';
+function addSVG(node, href) {
+	node.innerHTML ='<svg viewBox="0 0 512 512"><use xlink:href="' + href + '"></use></svg>';
 
 	node.parentNode.replaceChild(node.lastChild, node);
 }
@@ -18,5 +18,5 @@ function addSVG(node) {
 		<use xlink:href="demo.svg#camera"></use>
 	</svg>
 
-	<button onclick="addSVG(this)">Add another SVG</button>
+	<button onclick="addSVG(this, 'demo.svg#pencil')">Add external SVG</button>
 </body>
