@@ -1,4 +1,4 @@
-(function (document, requestAnimationFrame, CACHE, IE9TO11) {
+(function (document, uses, requestAnimationFrame, CACHE, IE9TO11) {
 	function onload() {
 		var xhr = this, x = document.createElement('x'), s = xhr.s;
 
@@ -24,7 +24,7 @@
 	function onframe() {
 		var use;
 
-		while ((use = document.getElementsByTagName('use')[0])) {
+		while ((use = uses[0])) {
 			var
 			svg = use.parentNode,
 			url = use.getAttribute('xlink:href').split('#'),
@@ -57,6 +57,7 @@
 	}
 })(
 	document,
+	document.getElementsByTagName('use'),
 	window.requestAnimationFrame || window.setTimeout,
 	{},
 	/Trident\/[567]\b/.test(navigator.userAgent)

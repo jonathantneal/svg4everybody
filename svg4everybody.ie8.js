@@ -1,4 +1,4 @@
-(function (document, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
+(function (document, uses, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
 	function onload() {
 		var xhr = this, x = document.createElement('x'), s = xhr.s;
 
@@ -24,7 +24,7 @@
 	function onframe() {
 		var use;
 
-		while ((use = document.getElementsByTagName('use')[0])) {
+		while ((use = uses[0])) {
 			if (LTEIE8) {
 				var
 				img = new Image();
@@ -66,6 +66,7 @@
 	}
 })(
 	document,
+	document.getElementsByTagName('use'),
 	window.requestAnimationFrame || window.setTimeout,
 	{},
 	/MSIE\s[1-8]\b/.test(navigator.userAgent),
