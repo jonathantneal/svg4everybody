@@ -2,11 +2,13 @@
 	function embed(svg, g) {
 		if (g) {
 			g = g.cloneNode(true);
+
 			g.removeAttribute('id');
+
 			svg.appendChild(g);
 		}
 	}
-	
+
 	function onload() {
 		var xhr = this, x = document.createElement('x'), s = xhr.s;
 
@@ -32,32 +34,32 @@
 			url_hash = url[1];
 
 			svg.removeChild(use);
-			
+
 			if (url_root.length) {
 				var xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
-	
+
 				if (!xhr.s) {
 					xhr.s = [];
-	
+
 					xhr.open('GET', url_root);
-	
+
 					xhr.onload = onload;
-	
+
 					xhr.send();
 				}
-	
+
 				xhr.s.push([svg, url_hash]);
-	
+
 				if (xhr.readyState === 4) {
 					xhr.onload();
 				}
-				
+
 			} else {
 				embed(svg, document.getElementById(url_hash));
 			}
 		}
 
-		requestAnimationFrame(onframe);		
+		requestAnimationFrame(onframe);
 	}
 
 	if (IE9TO11) {
