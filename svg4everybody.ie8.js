@@ -53,8 +53,7 @@
 			if (settings.fix == 'replace') {
 				var
 				div = document.createElement('div'),
-				img = new Image(),
-				attributes = ['id', 'class', 'title'];
+				img = new Image();
 
 				img.src = use.getAttribute('xlink:href').replace('#', '.') + settings.replaceExt;
 
