@@ -54,7 +54,9 @@
 
 				xhr.s.push([svg, url_hash]);
 
-				if (xhr.readyState === 4) xhr.onload();
+				if (xhr.readyState === 4) {
+					xhr.onload();
+				}
 			}
 		}
 
