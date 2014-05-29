@@ -1,57 +1,75 @@
-(function (document, navigator, CACHE, LTEIE8, IE9TO11) {
-	if (LTEIE8) document.attachEvent('onreadystatechange', function () {
-		var use, img;
+(function (document, uses, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
+	function onload() {
+		var xhr = this, x = document.createElement('x'), s = xhr.s;
 
-		while ((use = document.getElementsByTagName('use')[0])) {
-			img = new Image();
+		x.innerHTML = xhr.responseText;
 
-			img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
+		xhr.onload = function () {
+			s.splice(0).map(function (array) {
+				var g = x.querySelector('#' + array[1]);
 
-			use.parentNode.replaceChild(img, use);
-		}
-	});
+				if (g) {
+					g = g.cloneNode(true);
 
-	else if (IE9TO11) document.addEventListener('DOMContentLoaded', function () {
-		[].forEach.call(document.querySelectorAll('use'), function (use) {
-			var
-			svg = use.parentNode,
-			url = use.getAttribute('xlink:href').split('#'),
-			url_root = url[0],
-			url_hash = url[1],
-			xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
+					g.removeAttribute('id');
 
-			if (!xhr.s) {
-				xhr.s = [];
+					array[0].appendChild(g);
+				}
+			});
+		};
 
-				xhr.open('GET', url_root);
+		xhr.onload();
+	}
 
-				xhr.onload = function () {
-					var x = document.createElement('x'), s = xhr.s;
+	function onframe() {
+		var use;
 
-					x.innerHTML = xhr.responseText;
+		while ((use = uses[0])) {
+			if (LTEIE8) {
+				var
+				img = new Image();
 
-					xhr.onload = function () {
-						s.splice(0).map(function (array) {
-							var g = x.querySelector('#' + array[2]);
+				img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
 
-							if (g) array[0].replaceChild(g.cloneNode(true), array[1]);
-						});
-					};
+				use.parentNode.replaceChild(img, use);
+			} else {
+				var
+				svg = use.parentNode,
+				url = use.getAttribute('xlink:href').split('#'),
+				url_root = url[0],
+				url_hash = url[1],
+				xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
 
+				svg.removeChild(use);
+
+				if (!xhr.s) {
+					xhr.s = [];
+
+					xhr.open('GET', url_root);
+
+					xhr.onload = onload;
+
+					xhr.send();
+				}
+
+				xhr.s.push([svg, url_hash]);
+
+				if (xhr.readyState === 4) {
 					xhr.onload();
-				};
-
-				xhr.send();
+				}
 			}
+		}
 
-			xhr.s.push([svg, use, url_hash]);
+		requestAnimationFrame(onframe);		
+	}
 
-			if (xhr.readyState === 4) xhr.onload();
-		});
-	});
+	if (LTEIE8 || IE9TO11) {
+		onframe();
+	}
 })(
 	document,
-	navigator,
+	document.getElementsByTagName('use'),
+	window.requestAnimationFrame || window.setTimeout,
 	{},
 	/MSIE\s[1-8]\b/.test(navigator.userAgent),
 	/Trident\/[567]\b/.test(navigator.userAgent),

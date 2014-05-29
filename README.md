@@ -79,4 +79,4 @@ $ svgo spritemap.svg
 
 ---
 
-The standard script is 0.9KB or 408B minified + gzipped. The IE6-8 compatible script (which also works for IE9+) is 1.4KB or 534B minified + gzipped.
+The standard script is 1.13KB or 460B minified + gzipped. The IE6-8 compatible script (which also works for IE9+) is 1.45KB or 542B minified + gzipped.
