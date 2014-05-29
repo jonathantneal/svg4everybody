@@ -1,4 +1,12 @@
 (function (document, uses, requestAnimationFrame, CACHE, IE9TO11) {
+	function embed(svg, g) {
+		if (g) {
+			g = g.cloneNode(true);
+			g.removeAttribute('id');
+			svg.appendChild(g);
+		}
+	}
+	
 	function onload() {
 		var xhr = this, x = document.createElement('x'), s = xhr.s;
 
@@ -6,15 +14,7 @@
 
 		xhr.onload = function () {
 			s.splice(0).map(function (array) {
-				var g = x.querySelector('#' + array[1]);
-
-				if (g) {
-					g = g.cloneNode(true);
-
-					g.removeAttribute('id');
-
-					array[0].appendChild(g);
-				}
+				embed(array[0], x.querySelector('#' + array[1].replace(/(\W)/g, '\\$1')));
 			});
 		};
 
@@ -29,25 +29,31 @@
 			svg = use.parentNode,
 			url = use.getAttribute('xlink:href').split('#'),
 			url_root = url[0],
-			url_hash = url[1],
-			xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
+			url_hash = url[1];
 
 			svg.removeChild(use);
-
-			if (!xhr.s) {
-				xhr.s = [];
-
-				xhr.open('GET', url_root);
-
-				xhr.onload = onload;
-
-				xhr.send();
-			}
-
-			xhr.s.push([svg, url_hash]);
-
-			if (xhr.readyState === 4) {
-				xhr.onload();
+			
+			if (url_root.length) {
+				var xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
+	
+				if (!xhr.s) {
+					xhr.s = [];
+	
+					xhr.open('GET', url_root);
+	
+					xhr.onload = onload;
+	
+					xhr.send();
+				}
+	
+				xhr.s.push([svg, url_hash]);
+	
+				if (xhr.readyState === 4) {
+					xhr.onload();
+				}
+				
+			} else {
+				embed(svg, document.getElementById(url_hash));
 			}
 		}
 
