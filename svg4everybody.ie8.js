@@ -31,7 +31,7 @@
 				var
 				img = new Image();
 
-				img.src = use.getAttribute('xlink:href').replace('#', '.') + '.png';
+				img.src = use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
 
 				use.parentNode.replaceChild(img, use);
 			} else {
