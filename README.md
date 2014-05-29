@@ -10,6 +10,12 @@ To use **svg4everybody**, add it in the `<head>` of your document.
 
 Only IE6-8 require the script run this early, in order to shiv the **svg** and **use** elements.
 
+If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible) higher than IE8. This can be done with a response header or the following `<meta>` tag.
+
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+```
+
 ## Usage
 
 **spritemap.svg:**
