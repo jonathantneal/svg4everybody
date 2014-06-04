@@ -1,11 +1,20 @@
 (function (document, uses, requestAnimationFrame, CACHE, IE9TO11) {
 	function embed(svg, g) {
 		if (g) {
-			g = g.cloneNode(true);
+			var
+			viewBox = g.getAttribute('viewBox'),
+			fragment = document.createDocumentFragment(),
+			clone = g.cloneNode(true);
 
-			g.removeAttribute('id');
+			if (viewBox) {
+				svg.setAttribute('viewBox', viewBox);
+			}
 
-			svg.appendChild(g);
+			while (clone.childNodes.length) {
+				fragment.appendChild(clone.childNodes[0]);
+			}
+
+			svg.appendChild(fragment);
 		}
 	}
 
