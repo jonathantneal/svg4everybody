@@ -20,19 +20,19 @@ If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http:
 
 **spritemap.svg:**
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<g id="codepen"><title>CodePen</title><path etc.../></g>
-	<g id="youtube"><title>YouTube</title><path etc.../></g>
-	<g id="twitter"><title>Twitter</title><path etc.../></g>
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="codepen" viewBox="0 0 64 64"><title>CodePen</title><path etc.../></symbol>
+	<symbol id="youtube" viewBox="0 0 64 64"><title>YouTube</title><path etc.../></symbol>
+	<symbol id="twitter" viewBox="0 0 64 64"><title>Twitter</title><path etc.../></symbol>
 </svg>
 ```
 
 The preceding spritemap may be referenced without assistance in **Chrome**, **Firefox**, and **Opera**. This script polyfills the experience in **IE9-11**.
 
 ```html
-<svg role="img" title="CodePen" viewbox="0 0 64 64"><use xlink:href="spritemap.svg#codepen"></use></svg>
-<svg role="img" title="YouTube" viewbox="0 0 64 64"><use xlink:href="spritemap.svg#youtube"></use></svg>
-<svg role="img" title="Twitter" viewbox="0 0 64 64"><use xlink:href="spritemap.svg#twitter"></use></svg>
+<svg role="img" title="CodePen"><use xlink:href="spritemap.svg#codepen"></use></svg>
+<svg role="img" title="YouTube"><use xlink:href="spritemap.svg#youtube"></use></svg>
+<svg role="img" title="Twitter"><use xlink:href="spritemap.svg#twitter"></use></svg>
 ```
 
 ![3 SVG logos](http://i.imgur.com/87Npdzn.png)
@@ -40,9 +40,9 @@ The preceding spritemap may be referenced without assistance in **Chrome**, **Fi
 In **IE6-8**, the document markup is modified to fallback to PNG images.
 
 ```html
-<svg role="img" title="CodePen" viewbox="0 0 64 64"><img src="spritemap.svg.codepen.png"></svg>
-<svg role="img" title="YouTube" viewbox="0 0 64 64"><img src="spritemap.svg.youtube.png"></svg>
-<svg role="img" title="Twitter" viewbox="0 0 64 64"><img src="spritemap.svg.twitter.png"></svg>
+<svg role="img" title="CodePen"><img src="spritemap.svg.codepen.png"></svg>
+<svg role="img" title="YouTube"><img src="spritemap.svg.youtube.png"></svg>
+<svg role="img" title="Twitter"><img src="spritemap.svg.twitter.png"></svg>
 ```
 
 Fallback PNGs point to the same location as their corresponding SVGs, only with the `#` hash replaced by a `.` dot, and with an appended `.png` extension.
@@ -62,7 +62,7 @@ This title will be read aloud in JAWS and NVDA.
 Then, within document markup, each sprite reference may use a `title` attribute to identify itself.
 
 ```html
-<svg title="CodePen" viewbox="0 0 64 64"><use xlink:href="spritemap.svg#codepen"></use></svg>
+<svg title="CodePen"><use xlink:href="spritemap.svg#codepen"></use></svg>
 ```
 
 This title will be read aloud in VoiceOver and NVDA. At present, the `title` attribute is the only way to properly read aloud an SVG in VoiceOver.
@@ -71,6 +71,8 @@ For maximum compatibility, both the `title` attribute in the document and the `t
 
 - [Tips for Creating Accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
 - [Using ARIA to enhance SVG accessibility](http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/)
+
+- [SVG symbol a Good Choice for Icons](http://css-tricks.com/svg-symbol-good-choice-icons/)
 
 ## Smaller SVGs
 
