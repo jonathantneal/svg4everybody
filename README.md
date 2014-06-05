@@ -47,32 +47,44 @@ In **IE6-8**, the document markup is modified to fallback to PNG images.
 
 Fallback PNGs point to the same location as their corresponding SVGs, only with the `#` hash replaced by a `.` dot, and with an appended `.png` extension.
 
-## Individual labels
+## Readability and accessibility
 
-Markup SVG sprites with a combination of attributes and elements that best communicate their meaning to a variety of accessibility tools.
-
-Within SVG markup, each sprite may use a `<title>` element to identify itself.
+Within your spritemap, each sprite may use a `<title>` element to identify itself.
 
 ```html
-<g id="codepen"><title>CodePen</title><path etc.../></g>
+<symbol id="codepen"><title>CodePen</title><path etc.../></symbol>
 ```
 
-This title will be read aloud in JAWS and NVDA.
-
-Then, within document markup, each sprite reference may use a `title` attribute to identify itself.
+When this sprite is used, its title will be read aloud in [JAWS](http://www.freedomscientific.com/products/fs/JAWS-product-page.asp) and [NVDA](http://www.nvaccess.org/). Then, within your document, each sprite may use a `title` attribute to identify itself.
 
 ```html
 <svg title="CodePen"><use xlink:href="spritemap.svg#codepen"></use></svg>
 ```
 
-This title will be read aloud in VoiceOver and NVDA. At present, the `title` attribute is the only way to properly read aloud an SVG in VoiceOver.
+This title will be read aloud in [VoiceOver](http://www.apple.com/accessibility/osx/voiceover/) and [NVDA](http://www.nvaccess.org/). At present, the `title` attribute is the only way to properly read aloud an SVG in VoiceOver.
 
 For maximum compatibility, both the `title` attribute in the document and the `title` element in the SVG should be used.
 
-- [Tips for Creating Accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
+ARIA roles may be used to provide even more accessibility. `role="presentation"` should be used when a sprite decorates other content.
+
+```html
+<a href="//twitter.com/jon_neal"><svg role="presentation"><use xlink:href="sprite.svg#twitter"></svg> Find me on Twitter</a>
+```
+
+Alternatively, `role="img"` should be used when a sprite necessitates its own description.
+
+```html
+<a href="//twitter.com/jon_neal"><svg title="Find me on Twitter" role="img"><use xlink:href="sprite.svg#twitter"></svg></a>
+```
+
+### Futher reading
+
+- [Tips for creating accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
 - [Using ARIA to enhance SVG accessibility](http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/)
 
-- [SVG symbol a Good Choice for Icons](http://css-tricks.com/svg-symbol-good-choice-icons/)
+- [SVG symbol a good choice for icons](http://css-tricks.com/svg-symbol-good-choice-icons/)
+
+- [Implementing inline SVG Icons](https://kartikprabhu.com/article/inline-svg-icons)
 
 ## Smaller SVGs
 
