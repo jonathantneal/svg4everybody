@@ -79,5 +79,5 @@
 	document.getElementsByTagName('use'),
 	window.requestAnimationFrame || window.setTimeout,
 	{},
-	/Trident\/[567]\b/.test(navigator.userAgent)
+	/Trident\/[567]\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537
 );
