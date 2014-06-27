@@ -1,4 +1,4 @@
-(function (document, uses, requestAnimationFrame, CACHE, IE9TO11) {
+(function (document, uses, CACHE) {
 	function embed(svg, g) {
 		if (g) {
 			var
@@ -67,17 +67,14 @@
 				embed(svg, document.getElementById(url_hash));
 			}
 		}
-
-		requestAnimationFrame(onframe);
 	}
 
-	if (IE9TO11) {
-		onframe();
-	}
+	document.addEventListener('DOMContentLoaded', onframe);
+	document.addEventListener('DOMSubtreeModified', onframe);
+
+	onframe();
 })(
 	document,
 	document.getElementsByTagName('use'),
-	window.requestAnimationFrame || window.setTimeout,
-	{},
-	/Trident\/[567]\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537
+	{}
 );
