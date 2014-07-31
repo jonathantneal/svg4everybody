@@ -37,10 +37,11 @@
 
 		while ((use = uses[0])) {
 			if (LTEIE8) {
-				var
-				img = new Image();
+				var img = new Image(), src, q;
 
-				img.src = use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
+				src = use.getAttribute('xlink:href');
+				q = (/\?[^#]+/.exec(src) || [''])[0];
+				img.src = src.replace(/\?[^#]+/, '').replace('#', '.').replace(/^\./, '') + '.png' + q;
 
 				use.parentNode.replaceChild(img, use);
 			} else {
