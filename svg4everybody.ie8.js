@@ -40,7 +40,7 @@
 				var
 				img = new Image();
 
-				src = use.getAttribute('xlink:hrefalt');
+				src = use.getAttribute('data-fallback-src');
 
 				if ( src ) {
 					q = ( /\?[^#]+/.exec(src) || [''] )[0];
