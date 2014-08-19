@@ -56,16 +56,7 @@
 			} else {
 				var
 				svg = use.parentNode,
-				url,
-				url_root,
-				url_hash;
-
-				url = use.getAttribute('xlink:hrefalt').split('#');
-
-				if ( ! url ) {
-					url = use.getAttribute('xlink:href').split('#');
-				}
-
+				url = use.getAttribute('xlink:href').split('#'),
 				url_root = url[0],
 				url_hash = url[1];
 
