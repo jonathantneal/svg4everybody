@@ -1,3 +1,4 @@
+/*! svg4everybody v1.0.0 | github.com/jonathantneal/svg4everybody */
 (function (document, uses, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
 	function embed(svg, g) {
 		if (g) {
