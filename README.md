@@ -1,4 +1,4 @@
-# SVG for Everybody
+# SVG for Everybody v1.0.0
 
 Use external SVG spritemaps today. **SVG for Everybody** minds the gap between [SVG-capable browsers](http://caniuse.com/svg) and those which do not support [external SVG spritemaps](http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser Support).
 
