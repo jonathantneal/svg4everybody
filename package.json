@@ -8,5 +8,5 @@
 	"dependencies" : [],
 	"main": "svg4everybody.js",
 	"repository" : {"type": "git", "url": "git@github.com:jonathantneal/svg4everybody.git"},
-	"version" : "0.1.0"
+	"version" : "1.0.0"
 }
