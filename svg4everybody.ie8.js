@@ -41,7 +41,17 @@
 				var
 				img = new Image();
 
-				img.src = use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
+				src = use.getAttribute('data-fallback-src');
+
+				if ( src ) {
+					q = ( /\?[^#]+/.exec(src) || [''] )[0];
+					src = src.replace(/\?[^#]+/, '') + q;
+				}
+				else {
+					src = use.getAttribute('xlink:href');
+					q = ( /\?[^#]+/.exec(src) || [''] )[0];
+					src = src.replace(/\?[^#]+/, '').replace('#', '.').replace(/^\./, '') + '.png' + q;
+				}
 
 				use.parentNode.replaceChild(img, use);
 			} else {
