@@ -41,6 +41,21 @@
 				var
 				img = new Image();
 
+				// Sets size of PNG to match that of the replaced SVG
+				img.onload = function () {
+					var self = this,
+						parentNode = self.parentNode;
+
+					setTimeout(function () {
+						if ( parentNode.getAttribute('width') ) {
+							self.setAttribute('width', parentNode.getAttribute('width'));
+						}
+						if ( parentNode.getAttribute('height') ) {
+							self.setAttribute('height', parentNode.getAttribute('height'));
+						}
+					}, 10);
+				}
+
 				img.src = use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
 
 				use.parentNode.replaceChild(img, use);
