@@ -17,7 +17,7 @@ MutationObserver = (function () {
 				this.cb_fn    = cb_fn;
 				this.observed = [];
 
-				setInterval( this.checkAttributes.bind(this), 10000 );
+				setInterval( this.checkAttributes.bind(this), 1000 );
 			};
 
 		MutationObserver.prototype.disconnect = function ( el ) {
