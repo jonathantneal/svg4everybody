@@ -41,7 +41,7 @@
 				var
 				img = new Image();
 
-				img.src = use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
+				img.src = use.parentNode.getAttribute('data-fallback') ? use.parentNode.getAttribute('data-fallback') : use.getAttribute('xlink:href').replace('#', '.').replace(/^\./, '') + '.png';
 
 				use.parentNode.replaceChild(img, use);
 			} else {

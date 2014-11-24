@@ -47,6 +47,14 @@ In **IE6-8**, the document markup is modified to fallback to PNG images.
 
 Fallback PNGs point to the same location as their corresponding SVGs, only with the `#` hash replaced by a `.` dot, and with an appended `.png` extension.
 
+If needed, you can specify a different location for the fallback PNGs by setting the data-fallback attribute
+
+```html
+<svg role="img" title="CodePen" data-fallback="images/icons/png/codepen.png"><use xlink:href="spritemap.svg#codepen"></use></svg>
+<svg role="img" title="YouTube" data-fallback="images/icons/png/youtube.png"><use xlink:href="spritemap.svg#youtube"></use></svg>
+<svg role="img" title="Twitter" data-fallback="images/icons/png/twitter.png"><use xlink:href="spritemap.svg#twitter"></use></svg>
+```
+
 ## Readability and accessibility
 
 Within your spritemap, each sprite may use a `<title>` element to identify itself.
