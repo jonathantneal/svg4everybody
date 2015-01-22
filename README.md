@@ -2,13 +2,19 @@
 
 Use external SVG spritemaps today. **SVG for Everybody** minds the gap between [SVG-capable browsers](http://caniuse.com/svg) and those which do not support [external SVG spritemaps](http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser Support).
 
-To use **svg4everybody**, add it in the `<head>` of your document.
+To use **svg4everybody**, include the script in your document.
+
+```html
+<script src="/path/to/svg4everybody.min.js"></script>
+```
+
+If you want to support IE6-8 as well, include this script instead:
 
 ```html
 <script src="/path/to/svg4everybody.ie8.min.js"></script>
 ```
 
-Only IE6-8 require the script run this early, in order to shiv the **svg** and **use** elements.
+The IE6-8 script needs to be included in the `<head>`, in order to shiv the **svg** and **use** elements.
 
 If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible) higher than IE8. This can be done with a response header or the following `<meta>` tag.
 
