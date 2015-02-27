@@ -40,7 +40,7 @@
 			if (LTEIE8) {
 				var img = new Image(), src, q;
 
-				src = use.getAttribute('xlink:href');
+				src = use.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
 				q = (/\?[^#]+/.exec(src) || [''])[0];
 				img.src = src.replace(/\?[^#]+/, '').replace('#', '.').replace(/^\./, '') + '.png' + q;
 
@@ -48,7 +48,7 @@
 			} else {
 				var
 				svg = use.parentNode,
-				url = use.getAttribute('xlink:href').split('#'),
+				url = use.getAttributeNS('http://www.w3.org/1999/xlink', 'href').split('#'),
 				url_root = url[0],
 				url_hash = url[1];
 
