@@ -91,7 +91,7 @@
 	window.requestAnimationFrame || window.setTimeout,
 	{},
 	/MSIE\s[1-8]\b/.test(navigator.userAgent),
-	/Trident\/[567]\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537,
+	/Trident\/[567]\b/.test(navigator.userAgent) || /Edge\/12\.\d+/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537,
 	document.createElement('svg'),
 	document.createElement('use')
 );
