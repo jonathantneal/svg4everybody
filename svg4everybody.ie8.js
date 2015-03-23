@@ -62,7 +62,7 @@
 
 						xhr.open('GET', url_root);
 
-						xhr.onload = onload;
+						xhr.onload = onload.bind(xhr);
 
 						xhr.send();
 					}
