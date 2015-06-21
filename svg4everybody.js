@@ -43,7 +43,12 @@
 			url_root = url[0],
 			url_hash = url[1];
 
-			svg.removeChild(use);
+			if( svg.tagName == 'svg' ){
+                svg.removeChild(use);
+            }else{
+                uses.shift();
+                continue;
+            }
 
 			if (url_root.length) {
 				var xhr = CACHE[url_root] = CACHE[url_root] || new XMLHttpRequest();
