@@ -1,5 +1,23 @@
-/*! svg4everybody v1.0.0 | github.com/jonathantneal/svg4everybody */
-(function (document, uses, requestAnimationFrame, CACHE, IE9TO11) {
+/*! svg4everybody v1.1.0 | github.com/jonathantneal/svg4everybody */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // CommonJS
+        module.exports = factory();
+    } else {
+        // Browser globals
+        root.SVG4Everybody = factory();
+    }
+}(this, function (global) {
+
+	var uses,
+		requestAnimationFrame = requestAnimationFrame || setTimeout,
+		CACHE = {},
+		IE9TO11 = /Trident\/[567]\b/.test(navigator.userAgent) || /Edge\/12/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 538;
+
+	// methods
 	function embed(svg, g) {
 		if (g) {
 			var
@@ -72,13 +90,14 @@
 		requestAnimationFrame(onframe);
 	}
 
-	if (IE9TO11) {
-		onframe();
+	function SVG4Everybody() {
+		if (IE9TO11) {
+			uses = document.getElementsByTagName('use');
+			onframe();
+		}
 	}
-})(
-	document,
-	document.getElementsByTagName('use'),
-	window.requestAnimationFrame || window.setTimeout,
-	{},
-	/Trident\/[567]\b/.test(navigator.userAgent) || /Edge\/12/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 538
-);
+
+	// callable instance
+	return SVG4Everybody;
+
+}));

@@ -12,9 +12,12 @@ If you want to support IE6-8 as well, include this script instead:
 
 ```html
 <script src="/path/to/svg4everybody.ie8.min.js"></script>
+<script>window.SVG4Everybody();</script>
 ```
 
 The IE6-8 script needs to be included in the `<head>`, in order to shiv the **svg** and **use** elements.
+
+As of v1.1.0, you must the manually. If you are using a AMD/CommonJS dependency loader you can call the method within the callback closure.
 
 If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible) higher than IE8. This can be done with a response header or the following `<meta>` tag.
 
