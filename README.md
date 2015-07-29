@@ -1,22 +1,22 @@
-# SVG for Everybody v1.0.0
+# SVG for Everybody
 
-Use external SVG spritemaps today. **SVG for Everybody** minds the gap between [SVG-capable browsers](http://caniuse.com/svg) and those which do not support [external SVG spritemaps](http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser Support).
+[SVG for Everybody] is a script that adds [external spritemaps] support to otherwise [SVG-capable browsers].
 
 To use **svg4everybody**, include the script in your document.
 
 ```html
-<script src="/path/to/svg4everybody.min.js"></script>
+<script src="/path/to/svg4everybody.js"></script>
 ```
 
-If you want to support IE6-8 as well, include this script instead:
+To support IE6-8 as well, include the legacy script instead.
 
 ```html
-<script src="/path/to/svg4everybody.ie8.min.js"></script>
+<script src="/path/to/svg4everybody.legacy.js"></script>
 ```
 
-The IE6-8 script needs to be included in the `<head>`, in order to shiv the **svg** and **use** elements.
+The IE6-8 script needs to be included in the `<head>` in order to shiv the **svg** and **use** elements.
 
-If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible) higher than IE8. This can be done with a response header or the following `<meta>` tag.
+If running the standard script in IE9-11, be sure to set [X-UA-Compatible] higher than IE8. This can be done with a response header or the following meta tag.
 
 ```html
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -33,7 +33,7 @@ If running the standard script in IE9-11, be sure to set [X-UA-Compatible](http:
 </svg>
 ```
 
-The preceding spritemap may be referenced without assistance in **Chrome**, **Firefox**, and **Opera**. This script polyfills the experience in **IE9-11**.
+This spritemap works fine in **Chrome**, **Firefox**, and **Opera**. [SVG for Everybody] polyfills the experience in **IE9-11**.
 
 ```html
 <svg role="img" title="CodePen"><use xlink:href="spritemap.svg#codepen"></use></svg>
@@ -43,7 +43,7 @@ The preceding spritemap may be referenced without assistance in **Chrome**, **Fi
 
 ![3 SVG logos](http://i.imgur.com/87Npdzn.png)
 
-In **IE6-8**, the document markup is modified to fallback to PNG images.
+Older browsers falls back to PNG images.
 
 ```html
 <svg role="img" title="CodePen"><img src="spritemap.svg.codepen.png"></svg>
@@ -87,9 +87,7 @@ Alternatively, `role="img"` should be used when a sprite necessitates its own de
 
 - [Tips for creating accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
 - [Using ARIA to enhance SVG accessibility](http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/)
-
 - [SVG symbol a good choice for icons](http://css-tricks.com/svg-symbol-good-choice-icons/)
-
 - [Implementing inline SVG Icons](https://kartikprabhu.com/article/inline-svg-icons)
 
 ## Smaller SVGs
@@ -103,6 +101,7 @@ $ [sudo] npm install -g svgo
 $ svgo spritemap.svg
 ```
 
----
-
-The standard script is 1.51KB or 559B minified + gzipped. The IE6-8 compatible script (which also works for IE9+) is 1.86KB or 642B minified + gzipped.
+[external spritemaps]: http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser+Support
+[SVG-capable browsers]: http://caniuse.com/svg
+[SVG for Everybody]: https://github.com/jonathantneal/svg4everybody
+[X-UA-Compatible]: http://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible
