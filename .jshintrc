@@ -1,3 +1,4 @@
 {
-	"strict": false
+	"strict": false,
+	"-W084": true
 }
