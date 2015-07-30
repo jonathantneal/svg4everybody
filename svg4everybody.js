@@ -39,7 +39,7 @@
 		while ((use = uses[0])) {
 			var
 			svg = use.parentNode,
-			url = use.getAttribute('xlink:href').split('#'),
+			url = use.getAttributeNS('http://www.w3.org/1999/xlink', 'href').split('#'),
 			url_root = url[0],
 			url_hash = url[1];
 
