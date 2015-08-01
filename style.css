@@ -1,0 +1,64 @@
+html {
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	overflow-y: scroll;
+	text-size-adjust: 100%;
+}
+
+body {
+	color: #537;
+	font: 1em/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 2em auto;
+	max-width: 30em;
+}
+
+@media (max-width: 32em) {
+	body {
+		margin: 2em 1em;
+	}
+}
+
+h1 {
+	border-bottom: 1px solid #eee;
+	font-size: 2.25em;
+	margin: 1em 0 1rem;
+	padding-bottom: .3em;
+	text-align: center;
+}
+
+p,
+ul {
+	margin: 0 0 1em;
+}
+
+ul {
+	padding-left: 1.25em;
+}
+
+a {
+	color: #4078c0;
+	text-decoration: none;
+}
+
+a:focus,
+a:hover {
+	text-decoration: underline;
+}
+
+small {
+	color: #999;
+	font-style: italic;
+}
+
+img,
+svg {
+	display: block;
+	fill: currentColor;
+	height: 128px;
+	margin: 1em auto;
+	vertical-align: top;
+	width: 128px;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
