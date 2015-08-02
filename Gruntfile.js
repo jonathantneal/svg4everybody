@@ -11,6 +11,13 @@ module.exports = function (grunt) {
 			]
 		},
 		uglify: {
+			options: {
+				compress: {
+					global_defs: {
+						"LEGACY_SUPPORT": grunt.option('legacy') !== undefined ? grunt.option('legacy') : true
+					}
+				}
+			},
 			build: {
 				files: [
 					{
