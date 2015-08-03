@@ -73,12 +73,18 @@ Browsers not supporting SVG fallback to PNG images.
 
 Fallback PNGs point to the same location as their corresponding SVGs, only with the `#` hash replaced by a `.` dot, and with an appended `.png` extension.
 
+_If you do not wish to support browsers without SVG support, you can generate an optimized build to remove the bits of code that polyfill images with PNG fallbacks_
+
+```sh
+$ grunt build --legacy=false
+```
+
 ## Implementation status
 
 We’re still waiting on <s>Internet Explorer</s> Edge. [David Storey], its project manager assures us that native support for external content in SVGs is high on their interop checklist. You may [track progress] or [vote for attention] to this issue. I think it will land soon, but don’t quote me on anything.
 
 > I have complete faith in the Microsoft Edge team and absolutely expect support to arrive within the next few months.
-> 
+>
 > — Jon Neal (August, 2015)
 
 ## Readability and accessibility
