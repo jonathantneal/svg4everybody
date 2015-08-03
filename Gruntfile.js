@@ -19,19 +19,34 @@ module.exports = function (grunt) {
 				}
 			},
 			build: {
-				files: [
-					{
-						src: 'svg4everybody.min.js',
-						dest: 'svg4everybody.min.js'
+				files: {
+					'dist/svg4everybody.min.js': ['dist/svg4everybody.js']
+				}
+			},
+			dev: {
+				files: {
+					'dist/svg4everybody.js': ['dist/svg4everybody.js']
+				},
+				options: {
+					compress: {
+						global_defs: {
+							"LEGACY_SUPPORT": grunt.option('legacy') !== undefined ? grunt.option('legacy') : true
+						},
+						join_vars: false
+					},
+					mangle: false,
+					beautify: {
+						beautify: true,
+						bracketize: true
 					}
-				]
+				}
 			}
 		},
 		umd: {
 			build: {
 				options: {
 					src: 'lib/svg4everybody.js',
-					dest: 'svg4everybody.min.js',
+					dest: 'dist/svg4everybody.js',
 					globalAlias: 'svg4everybody',
 					objectToExport: 'svg4everybody'
 				}

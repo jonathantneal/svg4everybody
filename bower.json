@@ -9,5 +9,7 @@
 		"type": "git",
 		"url": "git@github.com:jonathantneal/svg4everybody.git"
 	},
-	"main": ["svg4everybody.min.js"]
+	"main": [
+		"dist/svg4everybody.js"
+	]
 }
