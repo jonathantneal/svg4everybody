@@ -33,10 +33,21 @@
 		xhr.onload();
 	}
 
-	function onframe() {
-		var use;
+	// NOTE (TS): added regex to test for presence of properly-formed 
+	// asset url; prevents issue of uncompiled icon directive being 
+	// processed by this library, until Angular has finished parsing/compiling
+	var urlRegex = /\.*\.svg/;
 
-		while ((use = uses[0])) {
+	function onframe() {
+		var use,
+			urlIsSet = false;
+		if(uses[0]) {
+			// if there's something to potentially process, make sure Angular 
+			// has compiled the markup into something useable before continuing
+			urlIsSet = urlRegex.test(uses[0].getAttribute('xlink:href'));
+		}
+		while ( (use = uses[0] ) && urlIsSet ) {
+
 			var
 			svg = use.parentNode,
 			url = use.getAttribute('xlink:href').split('#'),
@@ -68,7 +79,6 @@
 				embed(svg, document.getElementById(url_hash));
 			}
 		}
-
 		requestAnimationFrame(onframe);
 	}
 
