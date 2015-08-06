@@ -44,7 +44,8 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 4. Tidy all of your commits into one and undo changes to the compiled files.
    ```bash
    # Undo changes to the compiled files
-   npm checkout svg4everybody.min.js
+   git checkout svg4everybody.min.js
+   git checkout svg4everybody.js
    # Combine commits in your branch
    git rebase -i master
    ```
