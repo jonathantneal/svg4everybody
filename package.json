@@ -28,7 +28,7 @@
 		"grunt-umd": "^2.3.3",
 		"load-grunt-tasks": "^3.2.0"
 	},
-	"main": "dist/svg4everybody.legacy.min.js",
+	"main": "dist/svg4everybody.js",
 	"scripts": {
 		"build": "grunt build",
 		"clean": "git checkout dist/svg4everybody.js && git checkout dist/svg4everybody.min.js && git checkout dist/svg4everybody.legacy.js && git checkout dist/svg4everybody.legacy.min.js",
