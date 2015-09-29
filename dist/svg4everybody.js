@@ -25,9 +25,8 @@
     }
     function svg4everybody(opts) {
         function oninterval() {
-            for (var use; use = uses[0]; ) {
-                var svg = use.parentNode;
-                if (svg && /svg/i.test(svg.nodeName)) {
+            for (var use, svg, i = 0; i < uses.length; ) {
+                if (use = uses[i], svg = use.parentNode, svg && /svg/i.test(svg.nodeName)) {
                     var src = use.getAttribute("xlink:href");
                     if (polyfill && (!validate || validate(src, svg, use))) {
                         var url = src.split("#"), url_root = url[0], url_hash = url[1];
@@ -39,6 +38,8 @@
                             embed(svg, document.getElementById(url_hash));
                         }
                     }
+                } else {
+                    i += 1;
                 }
             }
             requestAnimationFrame(oninterval, 17);
