@@ -28,7 +28,7 @@
             for (var use; use = uses[0]; ) {
                 var svg = use.parentNode;
                 if (svg && /svg/i.test(svg.nodeName)) {
-                    var src = use.getAttribute("xlink:href");
+                    var src = srcCallback(use);
                     if (nosvg) {
                         var img = new Image(), width = svg.getAttribute("width"), height = svg.getAttribute("height");
                         img.src = fallback(src, svg, use), width && img.setAttribute("width", width), height && img.setAttribute("height", height), 
@@ -55,7 +55,9 @@
         };
         nosvg = "nosvg" in opts ? opts.nosvg : /\bMSIE [1-8]\b/.test(navigator.userAgent), 
         nosvg && (document.createElement("svg"), document.createElement("use"));
-        var polyfill = "polyfill" in opts ? opts.polyfill : nosvg || /\bEdge\/12\b|\bMSIE [1-8]\b|\bTrident\/[567]\b|\bVersion\/7.0 Safari\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537, validate = opts.validate, requestAnimationFrame = window.requestAnimationFrame || setTimeout, svgCache = {};
+        var polyfill = "polyfill" in opts ? opts.polyfill : nosvg || /\bEdge\/12\b|\bMSIE [1-8]\b|\bTrident\/[567]\b|\bVersion\/7.0 Safari\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537, validate = opts.validate, srcCallback = opts.srcCallback || function(use) {
+            return use.getAttribute("xlink:href");
+        }, requestAnimationFrame = window.requestAnimationFrame || setTimeout, svgCache = {};
         polyfill && oninterval();
     }
     return svg4everybody;

@@ -28,7 +28,7 @@
             for (var use; use = uses[0]; ) {
                 var svg = use.parentNode;
                 if (svg && /svg/i.test(svg.nodeName)) {
-                    var src = use.getAttribute("xlink:href");
+                    var src = srcCallback(use);
                     if (polyfill && (!validate || validate(src, svg, use))) {
                         var url = src.split("#"), url_root = url[0], url_hash = url[1];
                         if (svg.removeChild(use), url_root.length) {
@@ -44,7 +44,9 @@
             requestAnimationFrame(oninterval, 17);
         }
         opts = opts || {};
-        var uses = document.getElementsByTagName("use"), polyfill = "polyfill" in opts ? opts.polyfill : /\bEdge\/12\b|\bTrident\/[567]\b|\bVersion\/7.0 Safari\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537, validate = opts.validate, requestAnimationFrame = window.requestAnimationFrame || setTimeout, svgCache = {};
+        var uses = document.getElementsByTagName("use"), polyfill = "polyfill" in opts ? opts.polyfill : /\bEdge\/12\b|\bTrident\/[567]\b|\bVersion\/7.0 Safari\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537, validate = opts.validate, srcCallback = opts.srcCallback || function(use) {
+            return use.getAttribute("xlink:href");
+        }, requestAnimationFrame = window.requestAnimationFrame || setTimeout, svgCache = {};
         polyfill && oninterval();
     }
     return svg4everybody;
