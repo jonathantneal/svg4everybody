@@ -13,14 +13,17 @@
             svg.appendChild(fragment);
         }
     }
+    function createSvgElement(xhr) {
+        var xElement;
+        "undefined" == typeof xhr._elementCache && (xhr._elementCache = {}), "undefined" == typeof xhr._elementCache[xhr.responseURL] ? (xElement = document.createElement("x"), 
+        xElement.innerHTML = xhr.responseText, xhr._elementCache[xhr.responseURL] = xElement) : xElement = xhr._elementCache[xhr.responseURL], 
+        xhr.s.splice(0).map(function(array) {
+            embed(array[0], xElement.querySelector("#" + array[1].replace(/(\W)/g, "\\$1")));
+        });
+    }
     function loadreadystatechange(xhr) {
         xhr.onreadystatechange = function() {
-            if (4 === xhr.readyState) {
-                var x = document.createElement("x");
-                x.innerHTML = xhr.responseText, xhr.s.splice(0).map(function(array) {
-                    embed(array[0], x.querySelector("#" + array[1].replace(/(\W)/g, "\\$1")));
-                });
-            }
+            4 === xhr.readyState && createSvgElement(xhr);
         }, xhr.onreadystatechange();
     }
     function svg4everybody(opts) {
