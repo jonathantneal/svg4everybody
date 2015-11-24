@@ -25,9 +25,8 @@
     }
     function svg4everybody(opts) {
         function oninterval() {
-            for (var use; use = uses[0]; ) {
-                var svg = use.parentNode;
-                if (svg && /svg/i.test(svg.nodeName)) {
+            for (var use, svg, i = 0; i < uses.length; ) {
+                if (use = uses[i], svg = use.parentNode, svg && /svg/i.test(svg.nodeName)) {
                     var src = use.getAttribute("xlink:href");
                     if (nosvg) {
                         var img = new Image(), width = svg.getAttribute("width"), height = svg.getAttribute("height");
@@ -45,6 +44,8 @@
                             }
                         }
                     }
+                } else {
+                    i += 1;
                 }
             }
             requestAnimationFrame(oninterval, 17);
