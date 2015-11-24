@@ -134,15 +134,20 @@ Modern browsers support external content in SVGs, *except Edge*. No frets; we ca
 | iOS | iOS 6-7           | ✔   | ✖                | ✔       |
 | OSX | Saf 7.1+          | ✔   | ✔                | —       |
 | OSX | Saf 6             | ✔   | ✖                | ✔       |
+| Win | Edge 13           | ✔   | ✔                | —       |
 | Win | Edge 12           | ✔   | ✖                | ✔       |
 | Win | IE 9 - 11         | ✔   | ✖                | ✔       |
 | Win | IE 6 - 8          | ✖   | ✖                | ✔       |
 
-As you can see, at this point we’re really only waiting on Edge. Edge’s project manager, [David Storey] assures us that native support for external content in SVGs is high on their checklist. You may [track progress] or, better yet, [vote for attention] to this issue. I think it will land soon, but don’t quote me on anything.
+As you can see, **all major browsers support external content**.
+
+We had been waiting on Edge, previously, but [David Storey], Edge’s project manager assured us that native support for external content in SVGs was high on their checklist. We would [track progress] and [vote for attention] to this issue. Then, just as I predicted...
 
 > I have complete faith in the Microsoft Edge team and absolutely expect support to arrive within the next few months.
 >
 > — Jon Neal (August, 2015)
+
+All of our [dreams came true].
 
 ## Readability and accessibility
 
@@ -207,6 +212,7 @@ $ svgo spritemap.svg
 
 [all browsers]: http://caniuse.com/svg
 [David Storey]: https://twitter.com/dstorey/status/626514631884804096
+[dreams came true]: https://dev.windows.com/en-us/microsoft-edge/platform/changelog/desktop/10586/?compareWith=10240
 [SVG External Content]: http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser+Support
 [SVG for Everybody]: https://github.com/jonathantneal/svg4everybody
 [SVGO]: https://github.com/svg/svgo

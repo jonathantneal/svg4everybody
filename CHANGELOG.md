@@ -1,3 +1,8 @@
+## 2.0.1 (2015-11-24)
+
+- Fix infinite loop issue with invalid <use> tags
+- Update documentation
+
 ## 2.0.0 (2015-08-01)
 
 - Added: UMD pattern and `svg4everybody` method to activate shim
