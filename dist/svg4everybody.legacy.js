@@ -10,7 +10,7 @@
             for (viewBox && svg.setAttribute("viewBox", viewBox); clone.childNodes.length; ) {
                 fragment.appendChild(clone.firstChild);
             }
-            svg.appendChild(fragment);
+            svg.appendChild(fragment), svg.dispatchEvent(new Event("svg:embeded"));
         }
     }
     function createSvgElement(xhr) {
