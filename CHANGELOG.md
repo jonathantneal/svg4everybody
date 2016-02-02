@@ -1,9 +1,16 @@
+## 2.0.3 (2016-02-02)
+
+- Added: No polyfilling of Edge 12.10547+
+- Updated: Source with documentation
+- Updated: Caching for fetched SVG elements
+- Updated: Test document
+
 ## 2.0.2 (2016-02-02)
 
-- Use non-minified non-legacy version as main file
-- Adding caching for elements
-- Update project configuration and stricter linting
-- Add a test page
+- Added: Use non-minified non-legacy version as main file
+- Added: caching for elements
+- Updated: project configuration and stricter linting
+- Added: Test document
 - Updated documentation
 
 ## 2.0.1 (2015-11-24)
