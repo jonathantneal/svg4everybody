@@ -1,5 +1,7 @@
 # SVG for Everybody
 
+[![NPM Version][npm-img]][npm] [![Build Status][ci-img]][ci]
+
 [SVG for Everybody] adds [SVG External Content] support to [all browsers].
 
 To use it now, include the script in your document.
@@ -209,6 +211,11 @@ Use a tool like [SVGO] to optimize SVG spritemaps.
 $ [sudo] npm install -g svgo
 $ svgo spritemap.svg
 ```
+
+[ci]:      https://travis-ci.org/jonathantneal/svg4everybody
+[ci-img]:  https://img.shields.io/travis/jonathantneal/svg4everybody.svg
+[npm]:     https://www.npmjs.com/package/svg4everybody
+[npm-img]: https://img.shields.io/npm/v/svg4everybody.svg
 
 [all browsers]: http://caniuse.com/svg
 [David Storey]: https://twitter.com/dstorey/status/626514631884804096

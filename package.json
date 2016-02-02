@@ -1,38 +1,47 @@
 {
-	"name": "svg4everybody",
-	"description": "Use external SVG spritemaps in any browser",
-	"version": "2.0.1",
-	"author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
-	"contributors": [
-		"Luis Merino Rendez <mail@luismerino.name> (http://luismerino.name)"
-	],
-	"homepage": "https://github.com/jonathantneal/svg4everybody",
-	"license": "CC0-1.0",
-	"keywords": ["svgs", "sprites", "spritemaps", "symbols", "defs", "uses", "oldies", "ie8s", "ie9s", "safaris", "externals", "icons", "fallbacks"],
-	"bugs": {
-		"url": "https://github.com/jonathantneal/svg4everybody/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:jonathantneal/svg4everybody.git"
-	},
-	"engines": {
-		"node": ">=0.8.0"
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"grunt": "^0.4.5",
-		"grunt-contrib-jshint": "^0.11.2",
-		"grunt-contrib-uglify": "^0.9.1",
-		"grunt-contrib-watch": "^0.6.1",
-		"grunt-umd": "^2.3.3",
-		"load-grunt-tasks": "^3.2.0"
-	},
-	"main": "dist/svg4everybody.js",
-	"scripts": {
-		"build": "grunt build",
-		"clean": "git checkout dist/svg4everybody.js && git checkout dist/svg4everybody.min.js && git checkout dist/svg4everybody.legacy.js && git checkout dist/svg4everybody.legacy.min.js",
-		"test": "grunt test",
-		"watch": "grunt build:watch"
-	}
+  "name": "svg4everybody",
+  "version": "2.0.2",
+  "description": "Use external SVG spritemaps in any browser",
+  "main": "dist/svg4everybody.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.12.0",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^17.3.1",
+    "grunt-jscs": "^2.7.0",
+    "grunt-umd": "^2.3.5",
+    "load-grunt-tasks": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "clean": "git checkout dist/svg4everybody.js && git checkout dist/svg4everybody.min.js && git checkout dist/svg4everybody.legacy.js && git checkout dist/svg4everybody.legacy.min.js",
+    "test": "grunt test",
+    "watch": "grunt build:watch"
+  },
+  "repository": "jonathantneal/svg4everybody",
+  "keywords": [
+    "contents",
+    "defs",
+    "externals",
+    "fallbacks",
+    "icons",
+    "ie8s",
+    "ie9s",
+    "oldies",
+    "safaris",
+    "sprites",
+    "spritemaps",
+    "svgs",
+    "symbols",
+    "uses"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
+  "license": "CC0-1.0",
+  "bugs": "https://github.com/jonathantneal/svg4everybody/issues",
+  "homepage": "https://github.com/jonathantneal/svg4everybody#readme"
 }

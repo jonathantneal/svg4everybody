@@ -1,3 +1,11 @@
+## 2.0.2 (2016-02-02)
+
+- Use non-minified non-legacy version as main file
+- Adding caching for elements
+- Update project configuration and stricter linting
+- Add a test page
+- Updated documentation
+
 ## 2.0.1 (2015-11-24)
 
 - Fix infinite loop issue with invalid <use> tags
