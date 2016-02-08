@@ -98,7 +98,7 @@ All `<use>` elements that are children of an `<svg>` are checked for external co
 
 ```js
 svg4everybody({
-	validator: function (src, svg, use) {
+	validate: function (src, svg, use) {
 		// src: current xlink:href String 
 		// svg: current SVG Element 
 		// use: current USE Element 
