@@ -18,7 +18,7 @@ if (location.hash !== '#nofill') {
 }
 
 function addSVG(node, href) {
-	node.innerHTML ='<' + 'svg role="presentation"' + '><' + 'use xlink:href="' + href + '"/' + '><' + '/svg' + '>';
+	node.innerHTML = '<' + 'svg role="presentation"' + '><' + 'use xlink:href="' + href + '"/' + '><' + '/svg' + '>';
 	node.parentNode.replaceChild(node.lastChild, node);
 }
 </script>
@@ -42,7 +42,9 @@ svg {
 	</svg>
 
 	<svg title="Camera" role="img">
-		<use xlink:href="demo.svg#camera"/>
+		<g>
+			<use xlink:href="demo.svg#camera"/>
+		</g>
 	</svg>
 
 	<span>
