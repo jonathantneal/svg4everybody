@@ -14,7 +14,7 @@
             viewBox && svg.setAttribute("viewBox", viewBox);
             // copy the contents of the clone into the fragment
             for (// clone the target
-            var clone = target.cloneNode(!0); clone.childNodes.length; ) {
+            var clone = document.importNode ? document.importNode(target, !0) : target.cloneNode(!0); clone.childNodes.length; ) {
                 fragment.appendChild(clone.firstChild);
             }
             // append the fragment into the svg
