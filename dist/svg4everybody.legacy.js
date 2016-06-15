@@ -4,7 +4,7 @@
         return root.svg4everybody = factory();
     }) : "object" == typeof exports ? module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
-    /*! svg4everybody v2.0.3 | github.com/jonathantneal/svg4everybody */
+    /*! svg4everybody v2.1.0 | github.com/jonathantneal/svg4everybody */
     function embed(svg, target) {
         // if the target exists
         if (target) {
