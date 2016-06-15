@@ -1,6 +1,6 @@
 {
   "name": "svg4everybody",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Use external SVG spritemaps in any browser",
   "main": "dist/svg4everybody.js",
   "dependencies": {},
@@ -41,6 +41,13 @@
     "uses"
   ],
   "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
+  "contributors": [
+    "Federico Brigante (https://github.com/bfred-it)",
+    "Matija Marohnić (https://github.com/silvenon)",
+    "Michał Rumanek (https://github.com/michal-rumanek)",
+    "Oleg Andreyev (https://github.com/oleg-andreyev)",
+    "Shawn Allen (https://github.com/shawnbot)"
+  ],
   "license": "CC0-1.0",
   "bugs": "https://github.com/jonathantneal/svg4everybody/issues",
   "homepage": "https://github.com/jonathantneal/svg4everybody#readme"
