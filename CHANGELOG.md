@@ -1,3 +1,8 @@
+## 2.1.0 (2016-06-15)
+
+- Added: Support for [nested `use` elements](https://github.com/jonathantneal/svg4everybody/pull/117)
+- Updated: Test document
+
 ## 2.0.3 (2016-02-02)
 
 - Added: No polyfilling of Edge 12.10547+
