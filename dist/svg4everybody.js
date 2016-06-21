@@ -9,9 +9,9 @@
         // if the target exists
         if (target) {
             // create a document fragment to hold the contents of the target
-            var fragment = document.createDocumentFragment(), viewBox = !svg.getAttribute("viewBox") && target.getAttribute("viewBox");
-            // conditionally set the viewBox on the svg
-            viewBox && svg.setAttribute("viewBox", viewBox);
+            var fragment = document.createDocumentFragment(), viewBox = !svg.getAttribute("viewBox") && target.getAttribute("viewBox"), preserveAspectRatio = !svg.getAttribute("preserveAspectRatio") && target.getAttribute("preserveAspectRatio");
+            // conditionally set the attributes on the svg
+            viewBox && svg.setAttribute("viewBox", viewBox), preserveAspectRatio && svg.setAttribute("preserveAspectRatio", preserveAspectRatio);
             // copy the contents of the clone into the fragment
             for (// clone the target
             var clone = target.cloneNode(!0); clone.childNodes.length; ) {
