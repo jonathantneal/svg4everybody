@@ -1,14 +1,45 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		jshint: {
-			options: {
-				jshintrc: true
+		eslint: {
+			gruntfile: {
+				options: {
+					rules: {
+						camelcase: [0],
+						'global-require': [0]
+					}
+				},
+				files: {
+					src: ['Gruntfile.js']
+				}
 			},
-			build: [
-				'Gruntfile.js',
-				'lib/svg4everybody.js'
-			]
+			buildfile: {
+				options: {
+					globals: ['LEGACY_SUPPORT', 'svg4everybody'],
+					rules: {
+						'no-magic-numbers': [0],
+						'no-unused-vars': [0]
+					}
+				},
+				files: {
+					src: ['lib/svg4everybody.js']
+				}
+			}
+		},
+		jscs: {
+			gruntfile: {
+				options: {
+					requireCamelCaseOrUpperCaseIdentifiers: null
+				},
+				files: {
+					src: ['Gruntfile.js']
+				}
+			},
+			buildfile: {
+				files: {
+					src: ['lib/svg4everybody.js']
+				}
+			}
 		},
 		uglify: {
 			build: {
@@ -93,7 +124,7 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	// npm run test
-	grunt.registerTask('test', ['jshint']);
+	grunt.registerTask('test', ['eslint', 'jscs']);
 
 	// npm run build, grunt build
 	grunt.registerTask('build', ['test', 'umd', 'uglify']);

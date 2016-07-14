@@ -1,3 +1,28 @@
+## 2.1.0 (2016-06-15)
+
+- Added: Support for [nested `use` elements](https://github.com/jonathantneal/svg4everybody/pull/117)
+- Updated: Test document
+
+## 2.0.3 (2016-02-02)
+
+- Added: No polyfilling of Edge 12.10547+
+- Updated: Source with documentation
+- Updated: Caching for fetched SVG elements
+- Updated: Test document
+
+## 2.0.2 (2016-02-02)
+
+- Added: Use non-minified non-legacy version as main file
+- Added: caching for elements
+- Updated: project configuration and stricter linting
+- Added: Test document
+- Updated documentation
+
+## 2.0.1 (2015-11-24)
+
+- Fix infinite loop issue with invalid <use> tags
+- Update documentation
+
 ## 2.0.0 (2015-08-01)
 
 - Added: UMD pattern and `svg4everybody` method to activate shim
