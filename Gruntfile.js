@@ -70,7 +70,7 @@ module.exports = function (grunt) {
 							LEGACY_SUPPORT: false
 						}
 					},
-					preserveComments: 'some'
+					preserveComments: false
 				}
 			},
 			legacy: {
@@ -101,7 +101,7 @@ module.exports = function (grunt) {
 							LEGACY_SUPPORT: true
 						}
 					},
-					preserveComments: 'some'
+					preserveComments: false
 				}
 			}
 		},
