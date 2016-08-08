@@ -94,7 +94,7 @@ svg4everybody({
 });
 ```
 
-All `<use>` elements that are children of an `<svg>` are checked for external content. If you want to change this behavior, you can define your own validator.
+All `<use>` elements that are descendants of an `<svg>` are checked for external content. If you want to change this behavior, you can define your own validator.
 
 ```js
 svg4everybody({
