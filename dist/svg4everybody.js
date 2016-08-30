@@ -2,23 +2,31 @@
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
     define([], function() {
         return root.svg4everybody = factory();
-    }) : "object" == typeof exports ? module.exports = factory() : root.svg4everybody = factory();
+    }) : "object" == typeof exports ? // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
     /*! svg4everybody v2.1.0 | github.com/jonathantneal/svg4everybody */
-    function embed(svg, target) {
+    function embed(use, svg, target) {
         // if the target exists
         if (target) {
-            // create a document fragment to hold the contents of the target
-            var fragment = document.createDocumentFragment(), viewBox = !svg.getAttribute("viewBox") && target.getAttribute("viewBox");
+            // copy additional USE attributes to G
+            for (var container = use.attributes.length > 1 ? document.createElementNS(svg.namespaceURI, "g") : document.createDocumentFragment(), i = 0; i < use.attributes.length; i++) {
+                "xlink:href" !== use.attributes[i].name && container.setAttribute(use.attributes[i].name, use.attributes[i].value);
+            }
+            // TODO if X/Y attributes are used with USE their value has to be respected too
+            // cache the closest matching viewBox
+            var viewBox = !svg.getAttribute("viewBox") && target.getAttribute("viewBox");
             // conditionally set the viewBox on the svg
             viewBox && svg.setAttribute("viewBox", viewBox);
             // copy the contents of the clone into the fragment
             for (// clone the target
             var clone = target.cloneNode(!0); clone.childNodes.length; ) {
-                fragment.appendChild(clone.firstChild);
+                container.appendChild(clone.firstChild);
             }
             // append the fragment into the svg
-            svg.appendChild(fragment);
+            svg.appendChild(container);
         }
     }
     function loadreadystatechange(xhr) {
@@ -37,7 +45,7 @@
                     // ensure the cached target
                     target || (target = xhr._cachedTarget[item.id] = cachedDocument.getElementById(item.id)), 
                     // embed the target into the svg
-                    embed(item.svg, target);
+                    embed(item.use, item.svg, target);
                 });
             }
         }, // test the ready state change immediately
@@ -65,6 +73,7 @@
                             xhr || (xhr = requests[url] = new XMLHttpRequest(), xhr.open("GET", url), xhr.send(), 
                             xhr._embeds = []), // add the svg and id as an item to the xhr embeds list
                             xhr._embeds.push({
+                                use: use,
                                 svg: svg,
                                 id: id
                             }), // prepare the xhr ready state change event
