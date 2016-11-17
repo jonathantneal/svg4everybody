@@ -2,7 +2,7 @@
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
     define([], function() {
         return root.svg4everybody = factory();
-    }) : "object" == typeof exports ? // Node. Does not work with strict CommonJS, but
+    }) : "object" == typeof module && module.exports ? // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
