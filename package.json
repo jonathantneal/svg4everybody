@@ -11,7 +11,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.3.1",
     "grunt-jscs": "^2.7.0",
-    "grunt-umd": "^2.3.5",
+    "grunt-umd": "^2.4.0",
     "load-grunt-tasks": "^3.4.0"
   },
   "engines": {
