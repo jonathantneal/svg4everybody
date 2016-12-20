@@ -1,4 +1,4 @@
-## 2.1.0 (2016-06-15)
+## 2.1.4 (2016-06-15)
 
 - Added: Support for [nested `use` elements](https://github.com/jonathantneal/svg4everybody/pull/117)
 - Updated: Test document
