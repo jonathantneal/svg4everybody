@@ -52,13 +52,13 @@ This spritemap displays fine in **Chrome**, **Safari 7.1+**, **Firefox**, and **
 
 ```html
 <svg role="img" title="CodePen">
-	<use xlink:href="map.svg#codepen"/>
+	<use href="map.svg#codepen"/>
 </svg>
 <svg role="img" title="YouTube">
-	<use xlink:href="map.svg#youtube"/>
+	<use href="map.svg#youtube"/>
 </svg>
 <svg role="img" title="Twitter">
-	<use xlink:href="map.svg#twitter"/>
+	<use href="map.svg#twitter"/>
 </svg>
 ```
 
@@ -85,7 +85,7 @@ By default, fallback images point to a PNG file in the same location as the SVG,
 ```js
 svg4everybody({
 	fallback: function (src, svg, use) {
-		// src: current xlink:href String 
+		// src: current href String 
 		// svg: current SVG Element 
 		// use: current USE Element 
 
@@ -99,7 +99,7 @@ All `<use>` elements that are descendants of an `<svg>` are checked for external
 ```js
 svg4everybody({
 	validate: function (src, svg, use) {
-		// src: current xlink:href String 
+		// src: current href String 
 		// svg: current SVG Element 
 		// use: current USE Element 
 
@@ -168,7 +168,7 @@ When this sprite is used, its title will be read aloud in [JAWS](http://www.free
 
 ```html
 <svg title="CodePen">
-	<use xlink:href="map.svg#codepen"/>
+	<use href="map.svg#codepen"/>
 </svg>
 ```
 
@@ -182,7 +182,7 @@ When a sprite is merely decoration, use `role="presentation"`.
 
 ```html
 <a href="//twitter.com/jon_neal"><svg role="presentation">
-	<use xlink:href="map.svg#twitter"/>
+	<use href="map.svg#twitter"/>
 </svg> Find me on Twitter</a>
 ```
 
@@ -190,7 +190,7 @@ Otherwise, use `role="img"` and remember to add a description.
 
 ```html
 <a href="//twitter.com/jon_neal"><svg title="Find me on Twitter" role="img">
-	<use xlink:href="map.svg#twitter"/>
+	<use href="map.svg#twitter"/>
 </svg></a>
 ```
 
