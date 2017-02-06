@@ -91,7 +91,7 @@
                                 }
                             } else {
                                 // increase the index when the previous value was not "valid"
-                                ++index, ++rejects;
+                                ++index, ++numberOfSvgUseElementsToBypass;
                             }
                         }
                     }
@@ -101,7 +101,7 @@
                 }
             }
             // continue the interval
-            uses.length - rejects > 0 && requestAnimationFrame(oninterval, 67);
+            uses.length - numberOfSvgUseElementsToBypass > 0 && requestAnimationFrame(oninterval, 67);
         }
         var nosvg, fallback, opts = Object(rawopts);
         // configure the fallback method
@@ -115,7 +115,7 @@
         var polyfill, olderIEUA = /\bMSIE [1-8]\.0\b/, newerIEUA = /\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/, webkitUA = /\bAppleWebKit\/(\d+)\b/, olderEdgeUA = /\bEdge\/12\.(\d+)\b/;
         polyfill = "polyfill" in opts ? opts.polyfill : olderIEUA.test(navigator.userAgent) || newerIEUA.test(navigator.userAgent) || (navigator.userAgent.match(olderEdgeUA) || [])[1] < 10547 || (navigator.userAgent.match(webkitUA) || [])[1] < 537;
         // create xhr requests object
-        var requests = {}, requestAnimationFrame = window.requestAnimationFrame || setTimeout, uses = document.getElementsByTagName("use"), rejects = 0;
+        var requests = {}, requestAnimationFrame = window.requestAnimationFrame || setTimeout, uses = document.getElementsByTagName("use"), numberOfSvgUseElementsToBypass = 0;
         // conditionally start the interval if the polyfill is active
         polyfill && oninterval();
     }
