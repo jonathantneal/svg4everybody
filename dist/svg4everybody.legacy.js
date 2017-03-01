@@ -101,7 +101,7 @@
                 }
             }
             // continue the interval
-            uses.length - numberOfSvgUseElementsToBypass > 0 && requestAnimationFrame(oninterval, 67);
+            (!uses.length || uses.length - numberOfSvgUseElementsToBypass > 0) && requestAnimationFrame(oninterval, 67);
         }
         var nosvg, fallback, opts = Object(rawopts);
         // configure the fallback method
