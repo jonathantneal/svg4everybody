@@ -1,3 +1,8 @@
+## 2.1.5 (2017-02-28)
+
+- Updated: Fix for infinite loop in validation with polyfill
+- Updated: Fix for IFrame svg use issue in Edge
+
 ## 2.1.4 (2016-06-15)
 
 - Added: Support for [nested `use` elements](https://github.com/jonathantneal/svg4everybody/pull/117)

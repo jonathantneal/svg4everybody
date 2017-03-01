@@ -7,7 +7,7 @@
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
-    /*! svg4everybody v2.1.4 | github.com/jonathantneal/svg4everybody */
+    /*! svg4everybody v2.1.5 | github.com/jonathantneal/svg4everybody */
     function embed(parent, svg, target) {
         // if the target exists
         if (target) {
