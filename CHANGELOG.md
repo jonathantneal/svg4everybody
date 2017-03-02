@@ -1,3 +1,7 @@
+## 2.1.6 (2017-03-01)
+
+- Updated: Ensure the interval begins to run
+
 ## 2.1.5 (2017-02-28)
 
 - Updated: Fix for infinite loop in validation with polyfill
