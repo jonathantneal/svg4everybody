@@ -1,3 +1,7 @@
+## 2.1.7 (2017-03-03)
+
+- Updated: Fixing internal use tag in polyfill
+
 ## 2.1.6 (2017-03-01)
 
 - Updated: Ensure the interval begins to run
