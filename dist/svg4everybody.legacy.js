@@ -87,7 +87,7 @@
                                     loadreadystatechange(xhr);
                                 } else {
                                     // embed the local id into the svg
-                                    embed(parent, document.getElementById(id));
+                                    embed(parent, svg, document.getElementById(id));
                                 }
                             } else {
                                 // increase the index when the previous value was not "valid"
