@@ -8,7 +8,7 @@
     module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
     /*! svg4everybody v2.1.7 | github.com/jonathantneal/svg4everybody */
-    function embed(parent, svg, target) {
+    function embed(parent, svg, target, use) {
         // if the target exists
         if (target) {
             // create a document fragment to hold the contents of the target
@@ -17,14 +17,20 @@
             viewBox && svg.setAttribute("viewBox", viewBox);
             // copy the contents of the clone into the fragment
             for (// clone the target
-            var clone = target.cloneNode(!0); clone.childNodes.length; ) {
-                fragment.appendChild(clone.firstChild);
+            var clone = target.cloneNode(!0), g = document.createElementNS(svg.namespaceURI || "http://www.w3.org/2000/svg", "g"); clone.childNodes.length; ) {
+                g.appendChild(clone.firstChild);
             }
-            // append the fragment into the svg
+            if (use) {
+                for (var i = 0; use.attributes.length > i; i++) {
+                    var attr = use.attributes[i];
+                    "xlink:href" !== attr.name && "href" !== attr.name && g.setAttribute(attr.name, attr.value);
+                }
+            }
+            fragment.appendChild(g), // append the fragment into the svg
             parent.appendChild(fragment);
         }
     }
-    function loadreadystatechange(xhr) {
+    function loadreadystatechange(xhr, use) {
         // listen to changes in the request
         xhr.onreadystatechange = function() {
             // if the request is ready
@@ -40,7 +46,7 @@
                     // ensure the cached target
                     target || (target = xhr._cachedTarget[item.id] = cachedDocument.getElementById(item.id)), 
                     // embed the target into the svg
-                    embed(item.parent, item.svg, target);
+                    embed(item.parent, item.svg, target, use);
                 });
             }
         }, // test the ready state change immediately
@@ -73,10 +79,10 @@
                                     svg: svg,
                                     id: id
                                 }), // prepare the xhr ready state change event
-                                loadreadystatechange(xhr);
+                                loadreadystatechange(xhr, use);
                             } else {
                                 // embed the local id into the svg
-                                embed(parent, svg, document.getElementById(id));
+                                embed(parent, svg, document.getElementById(id), use);
                             }
                         } else {
                             // increase the index when the previous value was not "valid"
