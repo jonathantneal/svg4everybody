@@ -2,9 +2,9 @@
 <title>SVG for Everybody</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="../dist/svg4everybody.legacy.min.js"></script>
+<script src="../dist/svg4everybody.legacy.js"></script>
 <script>
-if (location.hash !== '#nofill') {
+if (location.hash === '') {
 	svg4everybody();
 } else if (location.hash === '#fill') {
 	svg4everybody({
@@ -45,11 +45,21 @@ svg {
 		<use xlink:href="demo.svg#camera"/>
 	</svg>
 
+	<svg title="Eye" role="img">
+		<use xlink:href="#eye"/>
+	</svg>
+
 	<svg title="Pencil" role="img">
 		<a xlink:href="javascript:alert('hi!');">
 			<use xlink:href="demo.svg#pencil"/>
 		</a>
 	</svg>
+
+    <svg title="Eye" role="img">
+        <a xlink:href="javascript:alert('hi!');">
+            <use xlink:href="#eye"/>
+        </a>
+    </svg>
 
 	<span>
 		<button onclick="addSVG(this, 'demo.svg#eye')">Add an external SVG</button>

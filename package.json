@@ -1,6 +1,6 @@
 {
   "name": "svg4everybody",
-  "version": "2.1.4",
+  "version": "2.1.7",
   "description": "Use external SVG spritemaps in any browser",
   "main": "dist/svg4everybody.js",
   "dependencies": {},
