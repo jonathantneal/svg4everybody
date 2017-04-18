@@ -7,7 +7,7 @@
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
-    /*! svg4everybody v2.1.7 | github.com/jonathantneal/svg4everybody */
+    /*! svg4everybody v2.1.8 | github.com/jonathantneal/svg4everybody */
     function embed(parent, svg, target) {
         // if the target exists
         if (target) {
@@ -55,6 +55,7 @@
                 var use = uses[index], parent = use.parentNode, svg = getSVGAncestor(parent);
                 if (svg) {
                     var src = use.getAttribute("xlink:href") || use.getAttribute("href");
+                    !src && opts.attributeName && (src = use.getAttribute(opts.attributeName));
                     if (polyfill) {
                         if (!opts.validate || opts.validate(src, svg, use)) {
                             // remove the <use> element

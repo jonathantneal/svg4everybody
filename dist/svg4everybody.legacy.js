@@ -7,7 +7,7 @@
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
-    /*! svg4everybody v2.1.7 | github.com/jonathantneal/svg4everybody */
+    /*! svg4everybody v2.1.8 | github.com/jonathantneal/svg4everybody */
     function embed(parent, svg, target) {
         // if the target exists
         if (target) {
@@ -56,7 +56,8 @@
                 if (svg) {
                     var src = use.getAttribute("xlink:href") || use.getAttribute("href");
                     // if running with legacy support
-                    if (nosvg) {
+                    if (!src && opts.attributeName && (src = use.getAttribute(opts.attributeName)), 
+                    nosvg) {
                         // create a new fallback image
                         var img = document.createElement("img");
                         // force display in older IE
