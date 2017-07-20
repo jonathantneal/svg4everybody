@@ -52,10 +52,9 @@
             for (// get the cached <use> index
             var index = 0; index < uses.length; ) {
                 // get the current <use>
-                var use = uses[index], parent = use.parentNode, svg = getSVGAncestor(parent);
-                if (svg) {
-                    var src = use.getAttribute("xlink:href") || use.getAttribute("href");
-                    !src && opts.attributeName && (src = use.getAttribute(opts.attributeName));
+                var use = uses[index], parent = use.parentNode, svg = getSVGAncestor(parent), src = use.getAttribute("xlink:href") || use.getAttribute("href");
+                if (!src && opts.attributeName && (src = use.getAttribute(opts.attributeName)), 
+                svg && src) {
                     if (polyfill) {
                         if (!opts.validate || opts.validate(src, svg, use)) {
                             // remove the <use> element
