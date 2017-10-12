@@ -7,8 +7,9 @@
 To use it now, include the script in your document.
 
 ```html
-<script src="/path/to/svg4everybody.js"></script>
-<script>svg4everybody(); // run it now or whenever you are ready</script>
+	<!-- run it whenever you are dom ready -->
+	<script src="/path/to/svg4everybody.js" onload="svg4everybody()" defer></script>
+</head>
 ```
 
 To support Internet Explorer 6-8, include the legacy script instead.
