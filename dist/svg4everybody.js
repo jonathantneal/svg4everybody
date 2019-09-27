@@ -33,7 +33,10 @@
                 var cachedDocument = xhr._cachedDocument;
                 // ensure the cached html document based on the xhr response
                 cachedDocument || (cachedDocument = xhr._cachedDocument = document.implementation.createHTMLDocument(""), 
-                cachedDocument.body.innerHTML = xhr.responseText, xhr._cachedTarget = {}), // clear the xhr embeds list and embed each item
+                cachedDocument.body.innerHTML = xhr.responseText, // ensure domains are the same, otherwise we'll have issues appending the
+                // element in IE 11
+                cachedDocument.domain !== document.domain && (cachedDocument.domain = document.domain), 
+                xhr._cachedTarget = {}), // clear the xhr embeds list and embed each item
                 xhr._embeds.splice(0).map(function(item) {
                     // get the cached target
                     var target = xhr._cachedTarget[item.id];
@@ -48,6 +51,14 @@
     }
     function svg4everybody(rawopts) {
         function oninterval() {
+            // if all <use>s in the array are being bypassed, don't proceed.
+            if (numberOfSvgUseElementsToBypass && uses.length - numberOfSvgUseElementsToBypass <= 0) {
+                return void requestAnimationFrame(oninterval, 67);
+            }
+            // if there are <use>s to process, proceed.
+            // reset the bypass counter, since the counter will be incremented for every bypassed element,
+            // even ones that were counted before.
+            numberOfSvgUseElementsToBypass = 0;
             // while the index exists in the live <use> collection
             for (// get the cached <use> index
             var index = 0; index < uses.length; ) {
@@ -89,7 +100,7 @@
                 }
             }
             // continue the interval
-            (!uses.length || uses.length - numberOfSvgUseElementsToBypass > 0) && requestAnimationFrame(oninterval, 67);
+            requestAnimationFrame(oninterval, 67);
         }
         var polyfill, opts = Object(rawopts), newerIEUA = /\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/, webkitUA = /\bAppleWebKit\/(\d+)\b/, olderEdgeUA = /\bEdge\/12\.(\d+)\b/, edgeUA = /\bEdge\/.(\d+)\b/, inIframe = window.top !== window.self;
         polyfill = "polyfill" in opts ? opts.polyfill : newerIEUA.test(navigator.userAgent) || (navigator.userAgent.match(olderEdgeUA) || [])[1] < 10547 || (navigator.userAgent.match(webkitUA) || [])[1] < 537 || edgeUA.test(navigator.userAgent) && inIframe;
