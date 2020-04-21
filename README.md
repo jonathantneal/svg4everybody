@@ -194,7 +194,7 @@ Otherwise, use `role="img"` and remember to add a description.
 </svg></a>
 ```
 
-### Futher reading
+### Further reading
 
 - [Tips for creating accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
 - [Using ARIA to enhance SVG accessibility](http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/)
