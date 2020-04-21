@@ -22,7 +22,7 @@
 		"init-declarations": [0],
 		"max-depth": [2, 6],
 		"max-nested-callbacks": [2, 3],
-		"max-params": [2, 3],
+		"max-params": [2, 4],
 		"max-statements": [0],
 		"new-parens": [0],
 		"no-alert": [2],
