@@ -1,3 +1,7 @@
+## 2.1.8 (2017-04-18)
+
+- Added: Support for [custom attribute on `use` elements](https://github.com/jonathantneal/svg4everybody/pull/155)
+
 ## 2.1.7 (2017-03-03)
 
 - Updated: Fixing internal use tag in polyfill

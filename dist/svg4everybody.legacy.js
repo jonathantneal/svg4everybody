@@ -7,7 +7,7 @@
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
 }(this, function() {
-    /*! svg4everybody v2.1.7 | github.com/jonathantneal/svg4everybody */
+    /*! svg4everybody v2.1.9 | github.com/jonathantneal/svg4everybody */
     function embed(parent, svg, target, use) {
         // if the target exists
         if (target) {
@@ -39,7 +39,10 @@
                 var cachedDocument = xhr._cachedDocument;
                 // ensure the cached html document based on the xhr response
                 cachedDocument || (cachedDocument = xhr._cachedDocument = document.implementation.createHTMLDocument(""), 
-                cachedDocument.body.innerHTML = xhr.responseText, xhr._cachedTarget = {}), // clear the xhr embeds list and embed each item
+                cachedDocument.body.innerHTML = xhr.responseText, // ensure domains are the same, otherwise we'll have issues appending the
+                // element in IE 11
+                cachedDocument.domain !== document.domain && (cachedDocument.domain = document.domain), 
+                xhr._cachedTarget = {}), // clear the xhr embeds list and embed each item
                 xhr._embeds.splice(0).map(function(item) {
                     // get the cached target
                     var target = xhr._cachedTarget[item.id];
@@ -54,13 +57,21 @@
     }
     function svg4everybody(rawopts) {
         function oninterval() {
+            // if all <use>s in the array are being bypassed, don't proceed.
+            if (numberOfSvgUseElementsToBypass && uses.length - numberOfSvgUseElementsToBypass <= 0) {
+                return void requestAnimationFrame(oninterval, 67);
+            }
+            // if there are <use>s to process, proceed.
+            // reset the bypass counter, since the counter will be incremented for every bypassed element,
+            // even ones that were counted before.
+            numberOfSvgUseElementsToBypass = 0;
             // while the index exists in the live <use> collection
             for (// get the cached <use> index
             var index = 0; index < uses.length; ) {
                 // get the current <use>
-                var use = uses[index], parent = use.parentNode, svg = getSVGAncestor(parent);
-                if (svg) {
-                    var src = use.getAttribute("xlink:href") || use.getAttribute("href");
+                var use = uses[index], parent = use.parentNode, svg = getSVGAncestor(parent), src = use.getAttribute("xlink:href") || use.getAttribute("href");
+                if (!src && opts.attributeName && (src = use.getAttribute(opts.attributeName)), 
+                svg && src) {
                     // if running with legacy support
                     if (nosvg) {
                         // create a new fallback image
@@ -107,7 +118,7 @@
                 }
             }
             // continue the interval
-            (!uses.length || uses.length - numberOfSvgUseElementsToBypass > 0) && requestAnimationFrame(oninterval, 67);
+            requestAnimationFrame(oninterval, 67);
         }
         var nosvg, fallback, opts = Object(rawopts);
         // configure the fallback method
