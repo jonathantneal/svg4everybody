@@ -181,7 +181,7 @@ ARIA roles may also be used to provide even more information to assistive techno
 When a sprite is merely decoration, use `role="presentation"`.
 
 ```html
-<a href="//twitter.com/jon_neal"><svg role="presentation">
+<a href="https://twitter.com/jon_neal"><svg role="presentation">
 	<use href="map.svg#twitter"/>
 </svg> Find me on Twitter</a>
 ```
@@ -189,7 +189,7 @@ When a sprite is merely decoration, use `role="presentation"`.
 Otherwise, use `role="img"` and remember to add a description.
 
 ```html
-<a href="//twitter.com/jon_neal"><svg title="Find me on Twitter" role="img">
+<a href="https://twitter.com/jon_neal"><svg title="Find me on Twitter" role="img">
 	<use href="map.svg#twitter"/>
 </svg></a>
 ```
@@ -197,8 +197,8 @@ Otherwise, use `role="img"` and remember to add a description.
 ### Further reading
 
 - [Tips for creating accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
-- [Using ARIA to enhance SVG accessibility](http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/)
-- [SVG symbol a good choice for icons](http://css-tricks.com/svg-symbol-good-choice-icons/)
+- [Using ARIA to enhance SVG accessibility](https://www.tpgi.com/using-aria-enhance-svg-accessibility/)
+- [SVG symbol a good choice for icons](https://css-tricks.com/svg-symbol-good-choice-icons/)
 - [Implementing inline SVG Icons](https://kartikprabhu.com/article/inline-svg-icons)
 
 ## Optimized SVGs
@@ -217,10 +217,10 @@ $ svgo spritemap.svg
 [npm]:     https://www.npmjs.com/package/svg4everybody
 [npm-img]: https://img.shields.io/npm/v/svg4everybody.svg
 
-[all browsers]: http://caniuse.com/svg
+[all browsers]: https://caniuse.com/svg
 [David Storey]: https://twitter.com/dstorey/status/626514631884804096
 [dreams came true]: https://dev.windows.com/en-us/microsoft-edge/platform/changelog/desktop/10586/?compareWith=10240
-[SVG External Content]: http://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser+Support
+[SVG External Content]: https://css-tricks.com/svg-sprites-use-better-icon-fonts/##Browser+Support
 [SVG for Everybody]: https://github.com/jonathantneal/svg4everybody
 [SVGO]: https://github.com/svg/svgo
 [track progress]: http://dev.modern.ie/platform/status/svgexternalcontent/?filter=f3e0000bf&search=svg
